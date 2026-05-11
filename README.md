@@ -15,3 +15,9 @@ Kesamaan URL koneksi antara program publisher dan subscriber mengindikasikan bah
 ![](image/Consoles.png)
 
 Komunikasi antara publisher dan subscriber berhasil dilakukan melalui message broker RabbitMQ. Pada console publisher, aplikasi mengirim lima event “User Created” yang berisi data pengguna. Secara bersamaan, console subscriber yang berjalan di WSL berhasil menerima dan memproses pesan-pesan tersebut tanpa adanya error null pointer. Hal ini menunjukkan bahwa sistem event-driven telah berfungsi dengan baik, di mana publisher bertindak sebagai producer dan subscriber sebagai consumer. Dengan menggunakan WSL, subscriber dapat menangani proses eksekusi dengan baik sesuai kebutuhan.
+
+## Monitoring chart based on publisher
+
+![](image/RabbitMQ-spikes.png)
+
+Grafik monitoring RabbitMQ tersebut dengan jelas memvisualisasikan interaksi event-driven selama eksekusi program berlangsung. Lonjakan pada grafik “Message rates” menunjukkan momen ketika publisher mengirim lima event pembuatan user, yang kemudian langsung ditangani oleh message broker. Terlihat bahwa tingkat “Publish” (garis oranye) dan “Consumer ack” (garis ungu) mencapai puncak secara bersamaan, menandakan bahwa pesan diproduksi dan dikonsumsi secara real-time. Hal ini mengonfirmasi bahwa koneksi antara aplikasi Rust dan instance RabbitMQ berjalan dengan stabil dan efisien. Aktivitas kemudian kembali ke angka nol setelah seluruh lima event yang telah ditentukan di dalam kode publisher selesai diproses sepenuhnya.
