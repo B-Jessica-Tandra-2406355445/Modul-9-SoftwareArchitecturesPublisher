@@ -9,3 +9,9 @@ Kesamaan URL koneksi antara program publisher dan subscriber mengindikasikan bah
 ## Screenshot of running RabbitMQ
 
 ![](image/RabbitMQ.png)
+
+## Sending and processing event
+
+![](image/Consoles.png)
+
+Komunikasi antara publisher dan subscriber berhasil dilakukan melalui message broker RabbitMQ. Pada console publisher, aplikasi mengirim lima event “User Created” yang berisi data pengguna. Secara bersamaan, console subscriber yang berjalan di WSL berhasil menerima dan memproses pesan-pesan tersebut tanpa adanya error null pointer. Hal ini menunjukkan bahwa sistem event-driven telah berfungsi dengan baik, di mana publisher bertindak sebagai producer dan subscriber sebagai consumer. Dengan menggunakan WSL, subscriber dapat menangani proses eksekusi dengan baik sesuai kebutuhan.
